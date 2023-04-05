@@ -12,7 +12,9 @@ dataStore.currentTrip = GeoJSON.coordsToLatLngs(dataStore.userInfo!.trip.trip.co
 const snackbar = ref(false);
 const snackbarLabel = ref("");
 const locationMarker = L.circleMarker([0, 0], { opacity: 0 }).bindPopup("Vous êtes ici");
-let startMarker = L.marker(dataStore.currentTrip[0]).bindPopup("Départ");
+let startMarker = L.marker(dataStore.currentTrip[0], {
+  icon: L.icon({iconUrl: "https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png", shadowUrl: "https://unpkg.com/leaflet@1.9.3/dist/images/marker-shadow.png"})
+}).bindPopup("Départ");
 let route = L.polyline(dataStore.currentTrip, { color: dataStore.userInfo?.school_color, weight: 5 });
 
 onMounted(async () => {
